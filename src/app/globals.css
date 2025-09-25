@@ -1,0 +1,318 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  line-height: 1.6;
+  color: var(--foreground);
+  background: var(--background);
+}
+
+/* Enhanced text contrast */
+.text-gray-600 {
+  color: rgb(75 85 99) !important;
+}
+
+.dark .text-gray-600 {
+  color: rgb(209 213 219) !important;
+}
+
+.text-gray-700 {
+  color: rgb(55 65 81) !important;
+}
+
+.dark .text-gray-700 {
+  color: rgb(229 231 235) !important;
+}
+
+.text-gray-300 {
+  color: rgb(209 213 219) !important;
+}
+
+.dark .text-gray-300 {
+  color: rgb(156 163 175) !important;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(243 244 246);
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: rgb(17 24 39);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(156 163 175);
+  border-radius: 4px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: rgb(75 85 99);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(107 114 128);
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: rgb(107 114 128);
+}
+
+/* Gradient text animation */
+@keyframes gradient {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-gradient {
+  background: linear-gradient(-45deg, #3b82f6, #8b5cf6, #06b6d4, #10b981);
+  background-size: 400% 400%;
+  animation: gradient 3s ease infinite;
+}
+
+/* Card backgrounds with better contrast */
+.bg-gray-50 {
+  background-color: rgb(249 250 251) !important;
+}
+
+.dark .bg-gray-50 {
+  background-color: rgb(17 24 39) !important;
+}
+
+.bg-white {
+  background-color: rgb(255 255 255) !important;
+}
+
+.dark .bg-white {
+  background-color: rgb(15 23 42) !important;
+}
+
+.bg-gray-800 {
+  background-color: rgb(31 41 55) !important;
+}
+
+.dark .bg-gray-800 {
+  background-color: rgb(15 23 42) !important;
+}
+
+.bg-gray-900 {
+  background-color: rgb(17 24 39) !important;
+}
+
+.dark .bg-gray-900 {
+  background-color: rgb(15 23 42) !important;
+}
+
+/* Focus styles */
+:focus-visible {
+  outline: 2px solid rgb(59 130 246);
+  outline-offset: 2px;
+}
+
+/* Selection styles */
+::selection {
+  background-color: rgb(59 130 246 / 0.3);
+}
+
+.dark ::selection {
+  background-color: rgb(59 130 246 / 0.4);
+}
+
+/* Custom Animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(5deg);
+  }
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-twinkle {
+  animation: twinkle 3s ease-in-out infinite;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
+
+/* Bootstrap spacing overrides for better mobile experience */
+@media (max-width: 576px) {
+  .container-fluid {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+/* Certification grid spacing fix */
+#certifications .grid > * {
+  min-height: fit-content;
+  overflow: visible;
+}
+
+/* Smooth transitions for theme switching */
+* {
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+/* App-wide spacing and layout helpers */
+/* Equal vertical spacing for sections */
+.section-base {
+  padding-block: clamp(3.5rem, 6vw, 5rem);
+}
+
+/* Consistent max-width and equal horizontal padding */
+.container-base {
+  max-width: 80rem; /* ~1280px */
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 3vw, 2rem);
+  text-align: center;
+}
+
+/* Equal padding on all sides for cards/blocks */
+.p-equal {
+  padding: clamp(1rem, 2.5vw, 2rem);
+}
+
+/* Center text/content where appropriate */
+.center-all {
+  text-align: center;
+}
+
+/* Justify longer paragraphs for better readability */
+.justify-text {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+/* Keep text on a single line on md+ screens; allow wrap on small */
+@media (min-width: 768px) {
+  .no-wrap-md {
+    white-space: nowrap;
+  }
+}
+
+/* Subtle blurred panel for readability over backgrounds */
+.panel-blur {
+  background: rgba(17, 24, 39, 0.35); /* slate-900 with transparency */
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  backdrop-filter: saturate(140%) blur(8px);
+  -webkit-backdrop-filter: saturate(140%) blur(8px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+.dark .panel-blur {
+  background: rgba(15, 23, 42, 0.45);
+  border-color: rgba(148, 163, 184, 0.25);
+}
+
+/* Responsive headline sizing */
+.h1-responsive {
+  font-size: clamp(2rem, 6vw, 3.25rem);
+  line-height: 1.1;
+}
+
+/* Role line sizing */
+.role-responsive {
+  font-size: clamp(1rem, 2.2vw, 1.25rem);
+}
+
+/* Flexible stat cards so they don't get too narrow */
+.stat-card {
+  min-width: 220px;
+}
+
+/* Blurred translucent panel for readability over backgrounds */
+.panel-blur {
+  background-color: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(148, 163, 184, 0.35);
+}
+.dark .panel-blur {
+  background-color: rgba(2, 6, 23, 0.65); /* slate-950 with alpha */
+  border-color: rgba(51, 65, 85, 0.6);
+}
+
+/* Responsive headline that scales across viewports */
+.h1-responsive {
+  font-size: clamp(1.75rem, 1.5rem + 3vw, 3.25rem);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+/* Prevent wrapping on md+ screens; allow normal wrap on small */
+.nowrap-md {
+  white-space: normal;
+}
+@media (min-width: 768px) {
+  .nowrap-md {
+    white-space: nowrap;
+  }
+}
+
+/* Blurred content panel for better contrast on busy backgrounds */
+.panel-blur {
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: saturate(120%) blur(10px);
+  -webkit-backdrop-filter: saturate(120%) blur(10px);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+.dark .panel-blur {
+  background-color: rgba(15, 23, 42, 0.75);
+  border-color: rgba(148, 163, 184, 0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
